@@ -6,48 +6,80 @@
   <title>Nutri Byte</title>
   <link rel="stylesheet" href="style.css" />
 
-  <link href="https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@700&family=Kaisei+HarunoUmi:wght@700&family=Lato:wght@800&display=swap" rel="stylesheet">
-
+  <!-- Google Fonts (already imported in CSS, but optional redundancy here) -->
+  <link href="https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@700&family=Kaisei+HarunoUmi:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
 </head>
-<body>
 
+<body>
   <!-- Hero Section -->
   <header class="hero">
+    <nav class="navbar">
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Start Analysing</a></li>
+        <li><a href="#">How It Works</a></li>
+        <li><a href="#">About Us</a></li>
+      </ul>
+    </nav>
+
     <div class="hero-overlay">
-      <nav class="navbar">
-        <ul>
-          <li><a href="#">HOME</a></li>
-          <li><a href="#">START ANALYSING</a></li>
-          <li><a href="#">HOW IT WORKS</a></li>
-          <li><a href="#">ABOUT US</a></li>
-        </ul>
-      </nav>
       <h1 class="hero-title">Nutri Byte</h1>
-      <a href="#" class="hero-button">START ANALYSING</a>
+      <a href="#" class="hero-button">Start Analysing</a>
+      <div class="scroll-indicator">Scroll</div>
     </div>
   </header>
 
-  <!-- How It Works -->
   <section class="section how-it-works">
-    <h2>How It Works</h2>
-    <div class="how-content">
-      <div class="step">
-        <img src="assets/upload.jpg" alt="Upload your photo" />
-        <h3>Upload Your Photo</h3>
-        <p>Simply snap a photo of any ingredient list or nutrition label using your smartphone camera. Our advanced image recognition technology can read text from various angles and lighting conditions.</p>
+  <h2>How It Works</h2>
+
+  <!-- Step 1 -->
+  <div class="how-content">
+    <div class="step-image rotate-white">
+      <img src="assets/upload.jpg" alt="Upload your photo" />
+    </div>
+    <div class="step-content">
+      <h3 class="step-title">Upload Your Photo</h3>
+      <p class="step-description">
+        Simply snap a photo of any ingredient list or nutrition label using your smartphone camera.
+        Our advanced image recognition technology can read text from various angles and lighting conditions.
+      </p>
+    </div>
+  </div>
+
+  <!-- Step 2 -->
+  <div class="how-content reverse">
+    <div class="step-image rotate-black">
+      <img src="assets/ai.jpg" alt="AI Analysis" />
+    </div>
+    <div class="step-content">
+      <h3 class="step-title">AI Analysis</h3>
+      <p class="step-description">
+        Our cutting-edge AI processes your uploaded image using OCR and machine learning algorithms to extract and analyze nutritional data from trusted sources.
+      </p>
+    </div>
+  </div>
+
+  <!-- Step 3 -->
+  <div class="how-content v-shape">
+    <div class="v-shape-images">
+      <div class="step-image rotate-v1">
+        <img src="assets/result1.jpg" alt="Result 1" />
       </div>
-      <div class="step">
-        <img src="assets/ai.jpg" alt="AI Analysis" />
-        <h3>AI Analysis</h3>
-        <p>Our cutting-edge AI processes your uploaded image using OCR and machine learning algorithms to extract and analyze nutritional data from trusted sources.</p>
-      </div>
-      <div class="step">
-        <img src="assets/result1.jpg" alt="Get Results" />
-        <h3>Get Results</h3>
-        <p>Receive instant, detailed nutritional insights including calories, macros, vitamins, allergens, and more.</p>
+      <div class="step-image rotate-v2">
+        <img src="assets/result2.jpg" alt="Result 2" />
       </div>
     </div>
-  </section>
+    <div class="step-content v-text">
+      <h3 class="step-title">Get Results</h3>
+      <p class="step-description">
+        Receive instant, detailed nutritional insights including calories, macros, vitamins, allergens, and more.
+      </p>
+    </div>
+  </div>
+</section>
+
+  
+
 
   <!-- Who We Are -->
   <section class="section who-we-are">
@@ -57,13 +89,13 @@
       <p class="desc">
         NutriByte combines cutting-edge AI with official nutritional databases like USDA and OpenFoodFacts to deliver accurate insights. Making nutrition information accessible to everyone, one photo at a time.
       </p>
-      <a href="#" class="btn">KNOW MORE</a>
+      <a href="#" class="btn">Know More</a>
     </div>
   </section>
 
   <!-- Testimonials -->
   <section class="section testimonials">
-    <h2>LOVE FROM YOU</h2>
+    <h2>Love From You</h2>
     <div class="testimonial-cards">
       <div class="card">
         <p>“A terrific piece of praise”</p>
@@ -103,17 +135,14 @@
     <div class="footer-top">
       <div>
         <h3>NutriByte</h3>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </p>
       </div>
       <div>
         <h4>Information</h4>
         <ul>
-          <li><a href="#">HOME</a></li>
-          <li><a href="#">START ANALYSING</a></li>
-          <li><a href="#">ABOUT US</a></li>
-          <li><a href="#">HOW IT WORKS</a></li>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Start Analysing</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">How It Works</a></li>
         </ul>
       </div>
       <div>
@@ -126,6 +155,5 @@
       <p>&copy; 2025 NutriByte. All rights reserved.</p>
     </div>
   </footer>
-
 </body>
 </html>
