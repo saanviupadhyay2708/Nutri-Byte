@@ -55,50 +55,58 @@ function setupUpload() {
   }
 }
 
-// 📊 Analyse Page: Render Nutrition Graphs
 function renderCharts() {
-  const posCanvas = document.getElementById("positiveChart");
-  const negCanvas = document.getElementById("negativeChart");
+  const positiveCtx = document.getElementById("positiveChart")?.getContext("2d");
+  const negativeCtx = document.getElementById("negativeChart")?.getContext("2d");
 
-  if (!posCanvas || !negCanvas) return;
+  if (!positiveCtx || !negativeCtx) return;
 
-  // Positive nutrients chart
-  new Chart(posCanvas.getContext("2d"), {
-    type: "bar",
+  const baseOptions = {
+    indexAxis: 'y', // 🔁 This makes the bars horizontal
+    responsive: true,
+    barThickness: 14, // 🎯 Makes bars thinner
+    plugins: {
+      legend: { display: false }
+    },
+    scales: {
+      x: {
+        beginAtZero: true,
+        ticks: {
+          stepSize: 1
+        }
+      },
+      y: {
+        ticks: {
+          color: "#fff", // optional for dark cards
+          font: { weight: 'bold' }
+        }
+      }
+    }
+  };
+
+  new Chart(positiveCtx, {
+    type: 'bar',
     data: {
-      labels: ["Protein", "Fiber", "Vitamin C", "Iron"],
-      datasets: [
-        {
-          label: "Positive",
-          data: [8, 6, 5, 7],
-          backgroundColor: ["#2ecc71", "#27ae60", "#1abc9c", "#16a085"],
-        },
-      ],
+      labels: ['Protein', 'Fiber', 'Vitamin C'],
+      datasets: [{
+        label: 'Positive Nutrients',
+        data: [8, 6, 7],
+        backgroundColor: ['#28a745', '#34c38f', '#20c997']
+      }]
     },
-    options: {
-      responsive: true,
-      plugins: { legend: { display: false } },
-      scales: { y: { beginAtZero: true } },
-    },
+    options: baseOptions
   });
 
-  // Negative nutrients chart
-  new Chart(negCanvas.getContext("2d"), {
-    type: "bar",
+  new Chart(negativeCtx, {
+    type: 'bar',
     data: {
-      labels: ["Sugar", "Trans Fats", "Sodium", "Cholesterol"],
-      datasets: [
-        {
-          label: "Negative",
-          data: [9, 5, 7, 6],
-          backgroundColor: ["#e74c3c", "#c0392b", "#d63031", "#ff7675"],
-        },
-      ],
+      labels: ['Sugar', 'Trans Fats', 'Sodium'],
+      datasets: [{
+        label: 'Negative Nutrients',
+        data: [9, 7, 6],
+        backgroundColor: ['#dc3545', '#e74c3c', '#c82333']
+      }]
     },
-    options: {
-      responsive: true,
-      plugins: { legend: { display: false } },
-      scales: { y: { beginAtZero: true } },
-    },
+    options: baseOptions
   });
 }
