@@ -445,7 +445,7 @@ body {
 .v-shape-images img {
   border-radius: 16px;
   box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
-  width: 440px;  /* increase this value */
+  width: 320px;  /* increase this value */
   height: auto;
   max-width: 100%;
   transition: transform 0.3s ease;
