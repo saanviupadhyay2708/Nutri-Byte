@@ -780,3 +780,64 @@ body {
     text-align: center;
   }
 }
+/* HOW IT WORKS - Grid Cards Section (New HTML Support) */
+#how {
+  padding: 80px 20px;
+  background-color: #f3f6f8;
+  text-align: center;
+}
+
+#how h2 {
+  font-size: clamp(40px, 6vw, 64px);
+  font-family: 'Abhaya Libre', serif;
+  margin-bottom: 60px;
+  color: #1a1a1a;
+  text-align: center;
+}
+
+.how-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.how-section .card {
+  background-color: #1a303b;
+  padding: 30px 20px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+}
+
+.how-section .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
+}
+
+.how-section .card img {
+  width: 100%;
+  max-width: 220px;
+  height: auto;
+  margin: 0 auto 20px;
+  border-radius: 12px;
+  object-fit: cover;
+  border: 5px solid #A9BAC2;
+}
+
+.how-section .card h3 {
+  font-size: 22px;
+  margin-bottom: 12px;
+  font-weight: 700;
+  color: #ffffff;
+  font-family: 'Lato', sans-serif;
+}
+
+.how-section .card p {
+  font-size: 16px;
+  color: #e6e6e6;
+  line-height: 1.6;
+  font-family: 'Lato', sans-serif;
+}
