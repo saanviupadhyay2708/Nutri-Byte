@@ -110,3 +110,15 @@ function renderCharts() {
     options: baseOptions
   });
 }
+// 🌟 Highlight active nav link
+document.addEventListener("DOMContentLoaded", () => {
+  const navLinks = document.querySelectorAll(".navbar a");
+  const currentPath = window.location.pathname.split("/").pop() || "index.html";
+
+  navLinks.forEach(link => {
+    const href = link.getAttribute("href");
+    if (href.includes(currentPath)) {
+      link.classList.add("active-link");
+    }
+  });
+});

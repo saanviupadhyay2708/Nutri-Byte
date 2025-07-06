@@ -1302,3 +1302,41 @@ footer.footer {
     gap: 20px;
   }
 }
+/* 🔥 Active link highlight */
+.navbar ul li a {
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 12px;
+  transition: color 0.3s ease;
+}
+
+.navbar ul li a.active-link {
+  color: #9bb7de !important;
+  font-weight: bold;
+  border-bottom: 2px solid #9bb7de;
+}
+/* Fix navbar overlap in about and analyse pages */
+body[data-page="about"] .rectangle,
+body[data-page="analyse"] .rectangle {
+  padding-top: 80px; /* enough space for navbar */
+  position: relative;
+}
+
+/* Optional: reduce navbar height for inner pages */
+body[data-page="about"] .navbar,
+body[data-page="analyse"] .navbar {
+  height: 50px;
+  padding: 10px 20px;
+  background-color: #171e2a;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+/* Reduce space inside nav items */
+body[data-page="about"] .navbar ul li a,
+body[data-page="analyse"] .navbar ul li a {
+  padding: 6px 10px;
+  font-size: 0.95rem;
+}
