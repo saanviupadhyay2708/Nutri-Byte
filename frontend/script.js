@@ -1,84 +1,104 @@
-// script.js
-
+// Wait until DOM is loaded
 document.addEventListener("DOMContentLoaded", () => {
-  setupUploadButton();
-  renderCharts();
+  const page = document.body.getAttribute("data-page");
+
+  if (page === "analyse") {
+    setupUpload();
+    renderCharts();
+  }
+
+  if (page === "about") {
+    animateAboutPage();
+  }
+
+  if (!page || page === "home") {
+    animateHomePage();
+  }
 });
 
-// 📷 Upload logic
-function setupUploadButton() {
+// 🌟 Home Page: Animate "How it Works" and Testimonials
+function animateHomePage() {
+  const headings = document.querySelectorAll(".animate-heading");
+  headings.forEach((el, i) => {
+    el.style.opacity = "0";
+    setTimeout(() => {
+      el.style.opacity = "1";
+      el.style.transform = "translateY(0)";
+    }, 200 + i * 300);
+  });
+}
+
+// 📄 About Page: Animate Paragraph Fade-in
+function animateAboutPage() {
+  const para = document.querySelector(".nutribyte-is");
+  if (para) {
+    para.style.opacity = "1";
+    para.style.transform = "translateY(0)";
+  }
+}
+
+// 📷 Analyse Page: Upload Handler
+function setupUpload() {
   const uploadBtn = document.getElementById("upload-btn");
   const fileInput = document.getElementById("file-upload");
-  const uploadedFile = document.getElementById("uploaded-file");
+  const uploadedText = document.getElementById("uploaded-file");
 
-  if (uploadBtn && fileInput && uploadedFile) {
-    uploadBtn.addEventListener("click", () => {
-      fileInput.click();
-    });
+  if (uploadBtn && fileInput && uploadedText) {
+    uploadBtn.addEventListener("click", () => fileInput.click());
 
     fileInput.addEventListener("change", () => {
-      const fileName = fileInput.files[0]?.name || "No file selected";
-      uploadedFile.textContent = `Selected: ${fileName}`;
+      const file = fileInput.files[0];
+      uploadedText.textContent = file
+        ? `Selected: ${file.name}`
+        : "No file selected";
     });
   }
 }
 
-// 📊 Render Bar Charts
-// 📊 Render Slim Horizontal Bar Charts
+// 📊 Analyse Page: Render Nutrition Graphs
 function renderCharts() {
-  if (!window.Chart) return;
+  const posCanvas = document.getElementById("positiveChart");
+  const negCanvas = document.getElementById("negativeChart");
 
-  const positiveCtx = document.getElementById("positiveChart")?.getContext("2d");
-  const negativeCtx = document.getElementById("negativeChart")?.getContext("2d");
+  if (!posCanvas || !negCanvas) return;
 
-  const chartOptions = {
-    indexAxis: 'y',
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: {
-      legend: { display: false }
+  // Positive nutrients chart
+  new Chart(posCanvas.getContext("2d"), {
+    type: "bar",
+    data: {
+      labels: ["Protein", "Fiber", "Vitamin C", "Iron"],
+      datasets: [
+        {
+          label: "Positive",
+          data: [8, 6, 5, 7],
+          backgroundColor: ["#2ecc71", "#27ae60", "#1abc9c", "#16a085"],
+        },
+      ],
     },
-    scales: {
-      x: {
-        beginAtZero: true,
-        grid: { color: "#444" },
-        ticks: { color: "#ccc" }
-      },
-      y: {
-        grid: { color: "#333" },
-        ticks: { color: "#ccc" }
-      }
+    options: {
+      responsive: true,
+      plugins: { legend: { display: false } },
+      scales: { y: { beginAtZero: true } },
     },
-    barThickness: 10,
-  };
+  });
 
-  if (positiveCtx) {
-    new Chart(positiveCtx, {
-      type: 'bar',
-      data: {
-        labels: ['Protein', 'Fiber', 'Vitamin C'],
-        datasets: [{
-          label: 'Positive Nutrients',
-          data: [8, 6, 7],
-          backgroundColor: ['#28a745', '#34c38f', '#20c997']
-        }]
-      },
-      options: chartOptions
-    });
-  }
-
-  if (negativeCtx) {
-    new Chart(negativeCtx, {
-      type: 'bar',
-      data: {
-        labels: ['Sugar', 'Trans Fats', 'Sodium'],
-        datasets: [{
-          label: 'Negative Nutrients',
-          data: [9, 7, 6],
-          backgroundColor: ['#dc3545', '#e74c3c', '#c82333']
-        }]
-      },
-      options: chartOptions
-    });
-  }
+  // Negative nutrients chart
+  new Chart(negCanvas.getContext("2d"), {
+    type: "bar",
+    data: {
+      labels: ["Sugar", "Trans Fats", "Sodium", "Cholesterol"],
+      datasets: [
+        {
+          label: "Negative",
+          data: [9, 5, 7, 6],
+          backgroundColor: ["#e74c3c", "#c0392b", "#d63031", "#ff7675"],
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      plugins: { legend: { display: false } },
+      scales: { y: { beginAtZero: true } },
+    },
+  });
 }
